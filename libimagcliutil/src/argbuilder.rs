@@ -1,6 +1,6 @@
 use std::option::Option;
 
-struct ArgBuilder<'a> {
+pub struct ArgBuilder<'a> {
     name: &'a str,
     long: Option<&'a str>,
     short: Option<&'a str>,
