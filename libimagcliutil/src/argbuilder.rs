@@ -1,5 +1,3 @@
-use std::option::Option;
-
 use clap::Arg;
 
 pub struct ArgBuilder<'a> {
@@ -115,3 +113,4 @@ impl<'a> ArgBuilder<'a> {
         arg
     }
 }
+

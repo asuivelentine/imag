@@ -20,9 +20,3 @@ pub mod create;
 pub mod delete;
 pub mod edit;
 
-#[cfg(test)]
-mod tests {
-    #[test]
-    fn it_works() {
-    }
-}
