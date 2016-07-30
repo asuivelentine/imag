@@ -1,6 +1,23 @@
 use argbuilder::ArgBuilder;
 
+use std::ops::Deref;
+use std::ops::DerefMut;
+
 pub struct NameArgBuilder<'a>(ArgBuilder<'a>);
+
+impl<'a> Deref for NameArgBuilder<'a> {
+    type Target = ArgBuilder<'a>;
+
+    fn deref(&self) -> &ArgBuilder<'a> {
+        &self.0
+    }
+}
+
+impl<'b> DerefMut for NameArgBuilder<'b> {
+    fn deref_mut<'a>(&'a mut self) -> &'a mut ArgBuilder<'b> {
+        &mut self.0
+    }
+}
 
 impl<'a> NameArgBuilder<'a> {
     pub fn new() -> NameArgBuilder<'a> {

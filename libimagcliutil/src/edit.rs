@@ -1,6 +1,23 @@
 use argbuilder::ArgBuilder;
 
+use std::ops::Deref;
+use std::ops::DerefMut;
+
 pub struct EditArgBuilder<'a>(ArgBuilder<'a>);
+
+impl<'a> Deref for EditArgBuilder<'a> {
+    type Target = ArgBuilder<'a>;
+
+    fn deref(&self) -> &ArgBuilder<'a> {
+        &self.0
+    }
+}
+
+impl<'b> DerefMut for EditArgBuilder<'b> {
+    fn deref_mut<'a>(&'a mut self) -> &'a mut ArgBuilder<'b> {
+        &mut self.0
+    }
+}
 
 impl<'a> EditArgBuilder<'a> {
     pub fn new() -> EditArgBuilder<'a> {
