@@ -12,6 +12,8 @@
     while_true,
 )]
 
+extern crate clap;
+
 pub mod argbuilder;
 
 #[cfg(test)]

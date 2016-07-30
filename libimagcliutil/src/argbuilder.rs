@@ -1,5 +1,7 @@
 use std::option::Option;
 
+use clap::Arg;
+
 pub struct ArgBuilder<'a> {
     name: &'a str,
     long: Option<&'a str>,
@@ -81,5 +83,35 @@ impl<'a> ArgBuilder<'a> {
     pub fn without_value_name(mut self) -> ArgBuilder<'a> {
         self.value_name = None;
         self
+    }
+
+    pub fn build(&self) -> Arg {
+        let mut arg = Arg::with_name(self.name);
+
+        if let Some(s) = self.short {
+            arg = arg.short(s);
+        }
+
+        if let Some(l) = self.long {
+            arg = arg.short(l);
+        }
+
+        if let Some(v) = self.value_name {
+            arg = arg.value_name(v);
+        }
+
+        if let Some(h) = self.helptext {
+            arg = arg.help(h);
+        }
+
+        if let Some(r) = self.required {
+            arg = arg.required(r);
+        }
+
+        if let Some(t) = self.takes_value {
+            arg = arg.takes_value(t);
+        }
+
+        arg
     }
 }
