@@ -15,6 +15,10 @@
 extern crate clap;
 
 pub mod argbuilder;
+pub mod name;
+pub mod create;
+pub mod delete;
+pub mod edit;
 
 #[cfg(test)]
 mod tests {
