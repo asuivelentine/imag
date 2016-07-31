@@ -207,6 +207,12 @@ impl<'a> Runtime<'a> {
                 .help("Set editor")
                 .required(false)
                 .takes_value(true))
+
+            .arg(Arg::with_name("term")
+                 .long("term")
+                 .help("set terminal emulator")
+                 .required(false)
+                 .takes_value(true))
     }
 
     /**
@@ -292,6 +298,21 @@ impl<'a> Runtime<'a> {
                 }
             })
             .or(env::var("EDITOR").ok())
+            .map(Command::new)
+    }
+
+    pub fn terminal(&self) -> Option<Command> {
+        self.cli()
+            .value_of("term")
+            .map(String::from)
+            .or({
+                match self.configuration {
+                    Some(ref c) => c.term().cloned(),
+                    _ => None,
+                }
+            })
+            .or(env::var("TERM").ok()
+                .or(Some("xterm".to_string())))
             .map(Command::new)
     }
 }

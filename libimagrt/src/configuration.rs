@@ -38,6 +38,9 @@ pub struct Configuration {
     /// The editor which should be used
     editor: Option<String>,
 
+    ///The terminal-emulator which should be used
+    term: Option<String>,
+
     ///The options the editor should get when opening some file
     editor_opts: String,
 }
@@ -55,6 +58,7 @@ impl Configuration {
         fetch_config(&rtp).map(|cfg| {
             let verbosity   = get_verbosity(&cfg);
             let editor      = get_editor(&cfg);
+            let term        = get_term(&cfg);
             let editor_opts = get_editor_opts(&cfg);
 
             debug!("Building configuration");
@@ -66,6 +70,7 @@ impl Configuration {
                 config: cfg,
                 verbosity: verbosity,
                 editor: editor,
+                term: term,
                 editor_opts: editor_opts,
             }
         })
@@ -73,6 +78,10 @@ impl Configuration {
 
     pub fn editor(&self) -> Option<&String> {
         self.editor.as_ref()
+    }
+
+    pub fn term(&self) -> Option<&String> {
+        self.term.as_ref()
     }
 
     #[allow(dead_code)] // Why do I actually need this annotation on a pub function?
@@ -175,6 +184,14 @@ fn get_verbosity(v: &Value) -> bool {
 fn get_editor(v: &Value) -> Option<String> {
     match *v {
         Value::Table(ref t) => t.get("editor")
+                .and_then(|v| match *v { Value::String(ref s) => Some(s.clone()), _ => None, }),
+        _ => None,
+    }
+}
+
+fn get_term(v: &Value) -> Option<String> {
+    match *v {
+        Value::Table(ref t) => t.get("term")
                 .and_then(|v| match *v { Value::String(ref s) => Some(s.clone()), _ => None, }),
         _ => None,
     }
