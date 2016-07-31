@@ -38,5 +38,9 @@ impl<'a> NameArgBuilder<'a> {
     pub fn arg_present(&self, arg: ArgMatches<'a>) -> bool {
         arg.is_present("name")
     }
+
+    pub fn fetch_value(&self, arg: ArgMatches<'a>) -> String {
+        arg.value_of("name").unwrap_or("invalid").to_string()
+    }
 }
 
