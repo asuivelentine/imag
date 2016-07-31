@@ -30,7 +30,7 @@ impl<'a> Default for AddArgBuilder<'a> {
             .with_helptext("add to Element")
             .with_takes_value(false)
             .with_required(false)
-            .without_value_name()
+            .without_value_name())
     }
 }
 

@@ -4,6 +4,8 @@ use std::ops::Deref;
 use std::ops::DerefMut;
 use std::default::Default;
 
+use clap::ArgMatches;
+
 pub struct SelectArgBuilder<'a>(ArgBuilder<'a>);
 
 impl<'a> Deref for SelectArgBuilder<'a> {

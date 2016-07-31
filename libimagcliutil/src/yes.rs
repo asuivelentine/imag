@@ -23,14 +23,14 @@ impl<'b> DerefMut for YesArgBuilder<'b> {
 }
 
 impl<'a> Default for YesArgBuilder<'a> {
-    fn default() -> AddArgBuilder<'a> {
+    fn default() -> YesArgBuilder<'a> {
         YesArgBuilder(ArgBuilder::new("yes")
             .with_short("y")
             .with_long("yes")
             .with_helptext("Positive acknowledge")
             .with_takes_value(false)
             .with_required(false)
-            .without_value_name()
+            .without_value_name())
     }
 }
 
