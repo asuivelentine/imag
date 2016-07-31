@@ -4,6 +4,8 @@ use std::ops::Deref;
 use std::ops::DerefMut;
 use std::default::Default;
 
+use clap::ArgMatches;
+
 pub struct CreateArgBuilder<'a>(ArgBuilder<'a>);
 
 impl<'a> Deref for CreateArgBuilder<'a> {
@@ -31,3 +33,10 @@ impl<'a> Default for CreateArgBuilder<'a> {
             .with_value_name("CREATE"))
     }
 }
+
+impl<'a> CreateArgBuilder<'a> {
+    pub fn arg_present(&self, arg: ArgMatches<'a>) -> bool {
+        arg.is_present("create")
+    }
+}
+

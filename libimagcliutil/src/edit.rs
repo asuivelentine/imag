@@ -4,6 +4,8 @@ use std::ops::Deref;
 use std::ops::DerefMut;
 use std::default::Default;
 
+use clap::ArgMatches;
+
 pub struct EditArgBuilder<'a>(ArgBuilder<'a>);
 
 impl<'a> Deref for EditArgBuilder<'a> {
@@ -29,6 +31,12 @@ impl<'a> Default for EditArgBuilder<'a> {
             .with_takes_value(true)
             .with_required(false)
             .with_value_name("EDIT"))
+    }
+}
+
+impl<'a> EditArgBuilder<'a> {
+    pub fn arg_present(&self, arg: ArgMatches<'a>) -> bool {
+        arg.is_present("edit")
     }
 }
 

@@ -4,6 +4,8 @@ use std::ops::Deref;
 use std::ops::DerefMut;
 use std::default::Default;
 
+use clap::ArgMatches;
+
 pub struct DeleteArgBuilder<'a>(ArgBuilder<'a>);
 
 impl<'a> Deref for DeleteArgBuilder<'a> {
@@ -29,6 +31,12 @@ impl<'a> Default for DeleteArgBuilder<'a> {
             .with_takes_value(false)
             .with_required(false)
             .without_value_name())
+    }
+}
+
+impl<'a> DeleteArgBuilder<'a> {
+    pub fn arg_present(&self, arg: ArgMatches<'a>) -> bool {
+        arg.is_present("delete")
     }
 }
 

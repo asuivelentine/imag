@@ -32,3 +32,9 @@ impl<'a> Default for SelectArgBuilder<'a> {
     }
 }
 
+impl<'a> SelectArgBuilder<'a> {
+    pub fn arg_present(&self, arg: ArgMatches<'a>) -> bool {
+        arg.is_present("select")
+    }
+}
+
