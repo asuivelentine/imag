@@ -38,5 +38,9 @@ impl<'a> EditArgBuilder<'a> {
     pub fn arg_present(&self, arg: ArgMatches) -> bool {
         arg.is_present("edit")
     }
+
+    pub fn fetch_value(&self, arg: &'a ArgMatches) -> Option<&'a str> {
+        arg.value_of("edit")
+    }
 }
 

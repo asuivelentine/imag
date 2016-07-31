@@ -38,5 +38,9 @@ impl<'a> TimeRangeArgBuilder<'a> {
     pub fn arg_present(&self, arg: ArgMatches) -> bool {
         arg.is_present("time-range")
     }
+
+    pub fn fetch_value(&self, arg: &'a ArgMatches) -> Option<&'a str> {
+        arg.value_of("time-range")
+    }
 }
 
