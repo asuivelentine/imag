@@ -2,6 +2,7 @@ use argbuilder::ArgBuilder;
 
 use std::ops::Deref;
 use std::ops::DerefMut;
+use std::default::Default;
 
 pub struct DateRangeArgBuilder<'a>(ArgBuilder<'a>);
 
@@ -19,15 +20,15 @@ impl<'b> DerefMut for DateRangeArgBuilder<'b> {
     }
 }
 
-impl<'a> DateRangeArgBuilder<'a> {
-    pub fn new() -> DateRangeArgBuilder<'a> {
+impl<'a> Default for DateRangeArgBuilder<'a> {
+    fn default() -> DateRangeArgBuilder<'a> {
         DateRangeArgBuilder(ArgBuilder::new("date-range")
-            .with_short("dr")
+            .with_short("d")
             .with_long("date-range")
             .with_helptext("Select elements within the range")
             .with_takes_value(true)
             .with_required(false)
             .with_value_name("DATERANGE"))
-    } 
+    }
 }
 

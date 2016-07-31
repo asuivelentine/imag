@@ -2,6 +2,7 @@ use argbuilder::ArgBuilder;
 
 use std::ops::Deref;
 use std::ops::DerefMut;
+use std::default::Default;
 
 pub struct NameArgBuilder<'a>(ArgBuilder<'a>);
 
@@ -19,8 +20,8 @@ impl<'b> DerefMut for NameArgBuilder<'b> {
     }
 }
 
-impl<'a> NameArgBuilder<'a> {
-    pub fn new() -> NameArgBuilder<'a> {
+impl<'a> Default for NameArgBuilder<'a> {
+    fn default() -> NameArgBuilder<'a> {
         NameArgBuilder(ArgBuilder::new("name")
             .with_short("n")
             .with_long("name")
@@ -28,6 +29,6 @@ impl<'a> NameArgBuilder<'a> {
             .with_takes_value(true)
             .with_required(false)
             .with_value_name("NAME"))
-    } 
+    }
 }
 

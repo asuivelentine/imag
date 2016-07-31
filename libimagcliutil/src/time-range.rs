@@ -2,6 +2,7 @@ use argbuilder::ArgBuilder;
 
 use std::ops::Deref;
 use std::ops::DerefMut;
+use std::default::Default;
 
 pub struct TimeRangeArgBuilder<'a>(ArgBuilder<'a>);
 
@@ -19,8 +20,8 @@ impl<'b> DerefMut for TimeRangeArgBuilder<'b> {
     }
 }
 
-impl<'a> TimeRangeArgBuilder<'a> {
-    pub fn new() -> TimeRangeArgBuilder<'a> {
+impl<'a> Default for TimeRangeArgBuilder<'a> {
+    fn default() -> TimeRangeArgBuilder<'a> {
         TimeRangeArgBuilder(ArgBuilder::new("time-range")
             .with_short("tr")
             .with_long("time-range")
@@ -28,6 +29,6 @@ impl<'a> TimeRangeArgBuilder<'a> {
             .with_takes_value(true)
             .with_required(false)
             .with_value_name("TIMERANGE"))
-    } 
+    }
 }
 

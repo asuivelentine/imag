@@ -2,6 +2,7 @@ use argbuilder::ArgBuilder;
 
 use std::ops::Deref;
 use std::ops::DerefMut;
+use std::default::Default;
 
 pub struct DeleteArgBuilder<'a>(ArgBuilder<'a>);
 
@@ -19,15 +20,15 @@ impl<'b> DerefMut for DeleteArgBuilder<'b> {
     }
 }
 
-impl<'a> DeleteArgBuilder<'a> {
-    pub fn new() -> DeleteArgBuilder<'a> {
+impl<'a> Default for DeleteArgBuilder<'a> {
+    fn default() -> DeleteArgBuilder<'a> {
         DeleteArgBuilder(ArgBuilder::new("delete")
             .with_short("d")
             .with_long("delete")
             .with_helptext("deletes the given element")
             .with_takes_value(false)
             .with_required(false)
-            .with_value_name("DELETE"))
-    } 
+            .without_value_name())
+    }
 }
 

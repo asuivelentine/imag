@@ -2,6 +2,7 @@ use argbuilder::ArgBuilder;
 
 use std::ops::Deref;
 use std::ops::DerefMut;
+use std::default::Default;
 
 pub struct AddArgBuilder<'a>(ArgBuilder<'a>);
 
@@ -19,15 +20,15 @@ impl<'b> DerefMut for AddArgBuilder<'b> {
     }
 }
 
-impl<'a> AddArgBuilder<'a> {
-    pub fn new() -> AddArgBuilder<'a> {
+impl<'a> Default for AddArgBuilder<'a> {
+    fn default() -> AddArgBuilder<'a> {
         AddArgBuilder(ArgBuilder::new("add")
             .with_short("a")
             .with_long("add")
             .with_helptext("add to Element")
             .with_takes_value(false)
             .with_required(false)
-            .with_value_name("ADD"))
-    } 
+            .without_value_name()
+    }
 }
 

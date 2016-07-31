@@ -2,6 +2,7 @@ use argbuilder::ArgBuilder;
 
 use std::ops::Deref;
 use std::ops::DerefMut;
+use std::default::Default;
 
 pub struct YesArgBuilder<'a>(ArgBuilder<'a>);
 
@@ -19,15 +20,15 @@ impl<'b> DerefMut for YesArgBuilder<'b> {
     }
 }
 
-impl<'a> YesArgBuilder<'a> {
-    pub fn new() -> YesArgBuilder<'a> {
+impl<'a> Default for YesArgBuilder<'a> {
+    fn default() -> AddArgBuilder<'a> {
         YesArgBuilder(ArgBuilder::new("yes")
             .with_short("y")
             .with_long("yes")
             .with_helptext("Positive acknowledge")
             .with_takes_value(false)
             .with_required(false)
-            .with_value_name("YES"))
-    } 
+            .without_value_name()
+    }
 }
 

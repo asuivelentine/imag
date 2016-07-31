@@ -2,6 +2,7 @@ use argbuilder::ArgBuilder;
 
 use std::ops::Deref;
 use std::ops::DerefMut;
+use std::default::Default;
 
 pub struct RangeArgBuilder<'a>(ArgBuilder<'a>);
 
@@ -19,8 +20,8 @@ impl<'b> DerefMut for RangeArgBuilder<'b> {
     }
 }
 
-impl<'a> RangeArgBuilder<'a> {
-    pub fn new() -> RangeArgBuilder<'a> {
+impl<'a> Default for RangeArgBuilder<'a> {
+    fn default() -> RangeArgBuilder<'a> {
         RangeArgBuilder(ArgBuilder::new("range")
             .with_short("r")
             .with_long("range")
@@ -28,6 +29,6 @@ impl<'a> RangeArgBuilder<'a> {
             .with_takes_value(true)
             .with_required(false)
             .with_value_name("RANGE"))
-    } 
+    }
 }
 

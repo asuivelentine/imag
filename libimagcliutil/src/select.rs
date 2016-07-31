@@ -2,6 +2,7 @@ use argbuilder::ArgBuilder;
 
 use std::ops::Deref;
 use std::ops::DerefMut;
+use std::default::Default;
 
 pub struct SelectArgBuilder<'a>(ArgBuilder<'a>);
 
@@ -19,8 +20,8 @@ impl<'b> DerefMut for SelectArgBuilder<'b> {
     }
 }
 
-impl<'a> SelectArgBuilder<'a> {
-    pub fn new() -> SelectArgBuilder<'a> {
+impl<'a> Default for SelectArgBuilder<'a> {
+    fn default() -> SelectArgBuilder<'a> {
         SelectArgBuilder(ArgBuilder::new("select")
             .with_short("s")
             .with_long("select")
@@ -28,6 +29,6 @@ impl<'a> SelectArgBuilder<'a> {
             .with_takes_value(true)
             .with_required(false)
             .with_value_name("SELECT"))
-    } 
+    }
 }
 
