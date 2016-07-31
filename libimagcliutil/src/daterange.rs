@@ -35,7 +35,7 @@ impl<'a> Default for DateRangeArgBuilder<'a> {
 }
 
 impl<'a> DateRangeArgBuilder<'a> {
-    pub fn arg_present(&self, arg: ArgMatches<'a>) -> bool {
+    pub fn arg_present(&self, arg: ArgMatches)-> bool {
         arg.is_present("date-range")
     }
 }
