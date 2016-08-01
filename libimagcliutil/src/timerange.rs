@@ -39,8 +39,10 @@ impl<'a> TimeRangeArgBuilder<'a> {
         arg.is_present("time-range")
     }
 
-    pub fn fetch_value(&self, arg: &'a ArgMatches) -> Option<&'a str> {
+    pub fn fetch_value(&self, arg: &'a ArgMatches) -> Option<Vec<&'a str>> {
         arg.value_of("time-range")
+            .and_then(|i| Some(i.split("..").collect::<Vec<&str>>()))
+            .or(None)
     }
 }
 

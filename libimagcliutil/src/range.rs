@@ -39,8 +39,12 @@ impl<'a> RangeArgBuilder<'a> {
         arg.is_present("range")
     }
 
-    pub fn fetch_value(&self, arg: &'a ArgMatches) -> Option<&'a str> {
-        arg.value_of("name")
+    pub fn fetch_value(&self, arg: &'a ArgMatches) -> Option<Vec<i32>> {
+        arg.value_of("range")
+            .and_then(|i| Some(i.split("..")
+                               .map(|i| i.parse::<i32>().unwrap_or(0))
+                               .collect::<Vec<i32>>()))
+            .or(None)
     }
 }
 

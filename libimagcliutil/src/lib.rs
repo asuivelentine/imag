@@ -22,6 +22,7 @@ pub mod edit;
 pub mod add;
 pub mod noedit;
 pub mod remove;
+pub mod range;
 pub mod timerange;
 pub mod daterange;
 pub mod select;
