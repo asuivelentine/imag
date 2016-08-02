@@ -1,5 +1,29 @@
 use clap::Arg;
 
+/// ArgBuilder is a abstract builder object which can be used to build more generic builders like a
+/// FooArgBuilder which can be instantiated and instantly provides some sane defaults for imag.
+///
+/// Basically this serves as abstraction over clap::Arg, so we can have something like:
+///
+/// ```ignore
+///     IdArgBuilder::default().build()
+/// ```
+///
+/// Which builds us a
+///
+/// ```ignore
+///     Arg::with_name("id")
+///         .long("id")
+///         .short("i")
+///         .takes_value(true)
+///         .required(true)
+///         .help("Specify ID")
+///         .value_name("ID"))
+/// ```
+///
+/// Of course, all parameters of the Arg instance to build are configurable, though some sane
+/// defaults are provided.
+///
 pub struct ArgBuilder<'a> {
     name: &'a str,
     long: Option<&'a str>,
