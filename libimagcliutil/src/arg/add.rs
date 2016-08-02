@@ -27,10 +27,10 @@ impl<'a> Default for AddArgBuilder<'a> {
         AddArgBuilder(ArgBuilder::new("add")
             .with_short("a")
             .with_long("add")
-            .with_helptext("add to Element")
-            .with_takes_value(false)
+            .with_helptext("Add entry")
+            .with_takes_value(true)
             .with_required(false)
-            .without_value_name())
+            .with_value_name("NAME"))
     }
 }
 
