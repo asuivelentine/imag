@@ -1,52 +1,11 @@
-use argbuilder::ArgBuilder;
-
-use std::ops::Deref;
-use std::ops::DerefMut;
-use std::default::Default;
-
-use clap::ArgMatches;
-
-pub struct YesArgBuilder<'a>(ArgBuilder<'a>);
-
-impl<'a> Deref for YesArgBuilder<'a> {
-    type Target = ArgBuilder<'a>;
-
-    fn deref(&self) -> &ArgBuilder<'a> {
-        &self.0
-    }
-}
-
-impl<'b> DerefMut for YesArgBuilder<'b> {
-    fn deref_mut<'a>(&'a mut self) -> &'a mut ArgBuilder<'b> {
-        &mut self.0
-    }
-}
-
-impl<'a> Default for YesArgBuilder<'a> {
-
-    /// Builds a default YesArgBuilder with
-    ///
-    ///  * name          = "yes"
-    ///  * short         = "y"
-    ///  * long          = "yes"
-    ///  * helptext      = "Positive acknowledge"
-    ///  * takes_value   = false
-    ///  * required      = false
-    ///
-    fn default() -> YesArgBuilder<'a> {
-        YesArgBuilder(ArgBuilder::new("yes")
-            .with_short("y")
-            .with_long("yes")
-            .with_helptext("Positive acknowledge")
-            .with_takes_value(false)
-            .with_required(false)
-            .without_value_name())
-    }
-}
-
-impl<'a> YesArgBuilder<'a> {
-    pub fn arg_present(&self, arg: ArgMatches<'a>) -> bool {
-        arg.is_present("yes")
-    }
-}
-
+build_arg_builder!(
+    YesArgBuilder,
+    yes,
+    "y",
+    |builder: ArgBuilder<'a>| builder
+        .with_long("yes")
+        .with_helptext("Positive acknowledge")
+        .with_takes_value(false)
+        .with_required(false)
+        .without_value_name()
+);
