@@ -23,6 +23,17 @@ impl<'b> DerefMut for RemoveArgBuilder<'b> {
 }
 
 impl<'a> Default for RemoveArgBuilder<'a> {
+
+    /// Builds a default RemoveArgBuilder with
+    ///
+    ///  * name        = "remove"
+    ///  * short       = "r"
+    ///  * long        = "remove"
+    ///  * helptext    = "remove the Element"
+    ///  * takes_value = true
+    ///  * required    = false
+    ///  * value_name  = "REMOVE"
+    ///
     fn default() -> RemoveArgBuilder<'a> {
         RemoveArgBuilder(ArgBuilder::new("remove")
             .with_short("r")

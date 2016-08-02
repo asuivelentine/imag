@@ -23,6 +23,17 @@ impl<'b> DerefMut for RangeArgBuilder<'b> {
 }
 
 impl<'a> Default for RangeArgBuilder<'a> {
+
+    /// Builds a default RangeArgBuilder with
+    ///
+    ///  * name        = "range"
+    ///  * short       = "r"
+    ///  * long        = "range"
+    ///  * helptext    = "in range"
+    ///  * takes_value = true
+    ///  * required    = false
+    ///  * value_name  = "RANGE"
+    ///
     fn default() -> RangeArgBuilder<'a> {
         RangeArgBuilder(ArgBuilder::new("range")
             .with_short("r")

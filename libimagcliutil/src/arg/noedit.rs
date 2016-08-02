@@ -23,6 +23,17 @@ impl<'b> DerefMut for NoEditArgBuilder<'b> {
 }
 
 impl<'a> Default for NoEditArgBuilder<'a> {
+
+    /// Builds a default NoEditArgBuilder with name
+    ///
+    ///  * no-edit     = "no-edit"
+    ///  * short       = "n"
+    ///  * long        = "no-edit"
+    ///  * helptext    = "do not edit the given element"
+    ///  * takes_value = false
+    ///  * required    = false
+    ///  * value_name  = "NOEDIT"
+    ///
     fn default() -> NoEditArgBuilder<'a> {
         NoEditArgBuilder(ArgBuilder::new("no-edit")
             .with_short("n")

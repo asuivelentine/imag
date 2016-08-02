@@ -23,6 +23,17 @@ impl<'b> DerefMut for SelectArgBuilder<'b> {
 }
 
 impl<'a> Default for SelectArgBuilder<'a> {
+
+    /// Builds a default SelectArgBuilder with
+    ///
+    ///  * name        = "select"
+    ///  * short       = "s"
+    ///  * long        = "select"
+    ///  * helptext    = "Select element"
+    ///  * takes_value = true
+    ///  * required    = false
+    ///  * value_name  = "SELECT"
+    ///
     fn default() -> SelectArgBuilder<'a> {
         SelectArgBuilder(ArgBuilder::new("select")
             .with_short("s")

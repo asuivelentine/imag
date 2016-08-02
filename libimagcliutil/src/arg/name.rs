@@ -23,6 +23,17 @@ impl<'b> DerefMut for NameArgBuilder<'b> {
 }
 
 impl<'a> Default for NameArgBuilder<'a> {
+
+    /// Builds a default NameArgBuilder with
+    ///
+    ///  * name        = "name"
+    ///  * short       = "n"
+    ///  * long        = "name"
+    ///  * helptext    = "select element by name"
+    ///  * takes_value = true
+    ///  * required    = false
+    ///  * value_name  = "NAME"
+    ///
     fn default() -> NameArgBuilder<'a> {
         NameArgBuilder(ArgBuilder::new("name")
             .with_short("n")

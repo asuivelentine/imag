@@ -23,6 +23,17 @@ impl<'b> DerefMut for EditArgBuilder<'b> {
 }
 
 impl<'a> Default for EditArgBuilder<'a> {
+
+    /// Builds a default EditArgBuilder with
+    ///
+    ///  * name        = "edit"
+    ///  * short       = "e"
+    ///  * long        = "edit"
+    ///  * helptext    = "edit the given element"
+    ///  * takes_value = true
+    ///  * required    = false
+    ///  * value_name  = "EDIT"
+    ///
     fn default() -> EditArgBuilder<'a> {
         EditArgBuilder(ArgBuilder::new("edit")
             .with_short("e")

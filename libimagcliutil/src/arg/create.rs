@@ -23,6 +23,17 @@ impl<'b> DerefMut for CreateArgBuilder<'b> {
 }
 
 impl<'a> Default for CreateArgBuilder<'a> {
+
+    /// Builds a default CreateArgBuilder with
+    ///
+    ///  * name        = "create"
+    ///  * short       = "c"
+    ///  * long        = "create"
+    ///  * helptext    = "creates a new element with name"
+    ///  * takes_value = true
+    ///  * required    = false
+    ///  * value_name  = "CREATE"
+    ///
     fn default() -> CreateArgBuilder<'a> {
         CreateArgBuilder(ArgBuilder::new("create")
             .with_short("c")

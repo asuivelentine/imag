@@ -23,6 +23,17 @@ impl<'b> DerefMut for DateRangeArgBuilder<'b> {
 }
 
 impl<'a> Default for DateRangeArgBuilder<'a> {
+
+    /// Builds a default DateRangeArgBuilder with name
+    ///
+    ///  * date-range  = "date-range"
+    ///  * short       = "d"
+    ///  * long        = "date-range"
+    ///  * helptext    = "Select elements within the range"
+    ///  * takes_value = true
+    ///  * required    = false
+    ///  * value_name  = "DATERANGE"
+    ///
     fn default() -> DateRangeArgBuilder<'a> {
         DateRangeArgBuilder(ArgBuilder::new("date-range")
             .with_short("d")

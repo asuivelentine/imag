@@ -23,6 +23,17 @@ impl<'b> DerefMut for AddArgBuilder<'b> {
 }
 
 impl<'a> Default for AddArgBuilder<'a> {
+
+    /// Build a default AddArgBuilder with
+    ///
+    ///  * name        = "add"
+    ///  * short       = "a"
+    ///  * long        = "add"
+    ///  * helptext    = "Add entry"
+    ///  * takes_value = true
+    ///  * required    = false
+    ///  * value_name  = "NAME"
+    ///
     fn default() -> AddArgBuilder<'a> {
         AddArgBuilder(ArgBuilder::new("add")
             .with_short("a")

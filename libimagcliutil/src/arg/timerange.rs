@@ -23,6 +23,17 @@ impl<'b> DerefMut for TimeRangeArgBuilder<'b> {
 }
 
 impl<'a> Default for TimeRangeArgBuilder<'a> {
+
+    /// Builds a default TimeRangeArgBuilder with
+    ///
+    ///  * name        = "time-range"
+    ///  * short       = "t"
+    ///  * long        = "time-range"
+    ///  * helptext    = "Select elements within the range"
+    ///  * takes_value = true
+    ///  * required    = false
+    ///  * value_name  = "TIMERANGE"
+    ///
     fn default() -> TimeRangeArgBuilder<'a> {
         TimeRangeArgBuilder(ArgBuilder::new("time-range")
             .with_short("tr")
