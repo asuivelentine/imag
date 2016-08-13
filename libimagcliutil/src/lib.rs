@@ -16,4 +16,5 @@ extern crate clap;
 
 pub mod arg;
 pub mod argbuilder;
+pub mod subcommandbuilder;
 
