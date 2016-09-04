@@ -4,7 +4,7 @@ build_subcommand_builder!(
     "add",
     |builder: SubCommandBuilder<'a>| builder
         .without_author()
-        .with_version("0.1")
+        .with_version("0.2.0")
         .with_about("Add about")
         .with_usage("usage text")
 );
