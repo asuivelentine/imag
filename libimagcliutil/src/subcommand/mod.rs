@@ -29,12 +29,11 @@ macro_rules! build_subcommand_builder {
             }
 
             impl<'a> Default for $typename<'a> {
-
                 fn default() -> $typename<'a> {
                     $typename($defaultimpl(SubCommandBuilder::new($argname)))
                 }
             }
-            
+
         }
     }
 
