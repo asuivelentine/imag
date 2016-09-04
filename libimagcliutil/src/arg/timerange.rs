@@ -3,10 +3,9 @@ build_arg_builder!(
     timerange,
     "time-range",
     |builder: ArgBuilder<'a>| builder
-        .with_short("tr")
-        .with_long("time-range")
-        .with_helptext("Select elements within the range")
+        .with_long("time")
+        .with_helptext("Select via time(-range)")
         .with_takes_value(true)
         .with_required(false)
-        .with_value_name("TIMERANGE")
+        .with_value_name("RANGE")
 );
