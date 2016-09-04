@@ -5,6 +5,7 @@ build_arg_builder!(
     |builder: ArgBuilder<'a>| builder
         .with_short("e")
         .with_long("edit")
-        .with_takes_value(true)
+        .with_helptext("Edit in $EDITOR")
+        .with_takes_value(false)
         .with_required(false)
 );
