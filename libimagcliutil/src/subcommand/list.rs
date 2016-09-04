@@ -9,3 +9,5 @@ build_subcommand_builder!(
         .with_usage("usage text")
 );
 
+pub use self::list::*;
+

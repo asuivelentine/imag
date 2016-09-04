@@ -10,3 +10,6 @@ build_arg_builder!(
         .with_required(false)
         .with_value_name("REMOVE")
 );
+
+pub use self::remove::*;
+
