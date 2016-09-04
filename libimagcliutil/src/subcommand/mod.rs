@@ -6,7 +6,7 @@ macro_rules! build_subcommand_builder {
         $defaultimpl: expr
     } => {
         mod $modname {
-            use subcommandbuilder::SubCommandBuilder;
+            use $crate::subcommandbuilder::SubCommandBuilder;
 
             use std::ops::Deref;
             use std::ops::DerefMut;

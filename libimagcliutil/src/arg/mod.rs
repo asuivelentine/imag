@@ -6,7 +6,7 @@ macro_rules! build_arg_builder {
         $defaultimpl: expr
     } => {
         mod $modname {
-            use argbuilder::ArgBuilder;
+            use $crate::argbuilder::ArgBuilder;
 
             use std::ops::Deref;
             use std::ops::DerefMut;
