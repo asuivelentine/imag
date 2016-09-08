@@ -1,12 +1,5 @@
 use clap::{App, Arg, SubCommand};
 
-
-//add
-//delete
-//list
-//view
-//edit
-//
 pub struct SubCommandBuilder<'a> {
     name: &'a str,
     author: Option<&'a str>,
@@ -17,6 +10,7 @@ pub struct SubCommandBuilder<'a> {
 }
 
 impl<'a> SubCommandBuilder<'a> {
+
     pub fn new(name: &'a str) -> SubCommandBuilder<'a> {
         SubCommandBuilder{
             name:       name,
@@ -94,10 +88,10 @@ impl<'a> SubCommandBuilder<'a> {
 
        if let Some(a) = self.about {
            command = command.about(a);
-       } 
-       
-       if let Some(v) = self.version { 
-           command = command.version(v); 
+       }
+
+       if let Some(v) = self.version {
+           command = command.version(v);
        }
 
        if let Some(u) = self.usage {
@@ -106,5 +100,6 @@ impl<'a> SubCommandBuilder<'a> {
 
        command
     }
+
 }
 
