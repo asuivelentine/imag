@@ -3,10 +3,8 @@ build_subcommand_builder!(
     delete,
     "delete",
     |builder: SubCommandBuilder<'a>| builder
-        .without_author()
-        .with_version("0.1")
-        .with_about("Delete about")
-        .with_usage("usage text")
+        .with_author("imag authors, imag@imag-pim.org")
+        .with_version("0.2.0")
 );
 
 pub use self::delete::*;

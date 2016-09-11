@@ -3,10 +3,8 @@ build_subcommand_builder!(
     add,
     "add",
     |builder: SubCommandBuilder<'a>| builder
-        .without_author()
-        .with_version("0.1")
-        .with_about("Add about")
-        .with_usage("usage text")
+        .with_author("imag authors, imag@imag-pim.org")
+        .with_version("0.2.0")
 );
 
 pub use self::add::*;
